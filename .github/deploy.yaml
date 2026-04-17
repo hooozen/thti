@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 监听分支，可按需修改
+
+permissions:
+  contents: write # ⭐ 强制启用写权限（最关键）
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取仓库代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 设置 Node.js 版本
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # 3. 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10 # 指定 pnpm 版本
+          run_install: false # 我们手动运行安装
+
+      # 4. 安装依赖
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 构建项目
+      - name: Build project
+        run: pnpx nuxi build --preset=cloudflare_pages
+
+      # 发布到 page 分支
+      - name: Deploy to cloudflare pages
+        env:
+          TEST: "TEST"
+          CLOUDFLARE_API_TOKEN: ${{ secrets.THTI_CF_TOKEN}}
+        run: pnpx wrangler pages deploy dist/ --project-name=thti --branch=main

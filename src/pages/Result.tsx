@@ -165,7 +165,7 @@ export function ResultPage() {
 
   const isHidden = !!typeInfo.hidden;
   const hasUserData = !!result;
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareUrl = typeof window !== "undefined" ? window.location.hostname : "";
   const isDegen = result?.hiddenTrigger === "degen" || displayCode === "DEGEN";
 
   return (
