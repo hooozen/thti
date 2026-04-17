@@ -57,23 +57,22 @@ export function TestPage() {
 
   function handleSelect(v: number) {
     if (!currentQ) return;
-    if (currentQ.id === 'g1') {
+    const qid = currentQ.id;
+    if (qid === 'g1') {
       const opt = g1.options.find((o) => o.value === v);
-      setGate((prev) => ({ ...prev, g1: v }));
       if (opt?.triggers === 'g2') {
+        setGate((prev) => ({ ...prev, g1: v }));
         setShowG2(true);
       } else {
+        setGate((prev) => ({ ...prev, g1: v, g2: undefined }));
         setShowG2(false);
-        setGate((prev) => ({ ...prev, g2: undefined }));
       }
-    } else if (currentQ.id === 'g2') {
+    } else if (qid === 'g2') {
       setGate((prev) => ({ ...prev, g2: v }));
     } else {
-      setAnswers((prev) => ({ ...prev, [currentQ.id]: v }));
+      setAnswers((prev) => ({ ...prev, [qid]: v }));
     }
-    window.setTimeout(() => {
-      setCursor((c) => Math.min(c + 1, total));
-    }, 220);
+    setCursor((c) => c + 1);
   }
 
   function handleBack() {
@@ -81,7 +80,7 @@ export function TestPage() {
   }
 
   function handleNext() {
-    setCursor((c) => Math.min(c + 1, total));
+    setCursor((c) => c + 1);
   }
 
   useEffect(() => {
@@ -110,7 +109,10 @@ export function TestPage() {
     navigate(`/result/${encodeURIComponent(result.code)}/${payload}`, { replace: true });
   }, [finished, order, answers, gate.g1, gate.g2, gateIndex, list, navigate]);
 
-  const displayProgress = Math.min(cursor + (finished ? 0 : 1), total);
+  const answeredMainCount = order.reduce(
+    (n, q) => (typeof answers[q.id] === 'number' ? n + 1 : n),
+    0,
+  );
   const nextEnabled = currentValue !== undefined;
   const isLast = !finished && cursor === total - 1;
 
@@ -126,7 +128,7 @@ export function TestPage() {
             × 退出
           </button>
         </div>
-        <ProgressBar current={displayProgress} total={total} />
+        <ProgressBar current={answeredMainCount} total={order.length} />
       </div>
 
       {currentQ ? (
