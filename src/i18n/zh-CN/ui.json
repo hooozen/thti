@@ -1,0 +1,63 @@
+{
+  "app": {
+    "title": "THTI",
+    "subtitle": "德扑人格测试",
+    "fullName": "Texas Hold'em Personality Type Indicator"
+  },
+  "home": {
+    "heroTitle": "你在牌桌上，到底是哪一种人？",
+    "heroSubtitle": "30 道题，25 种德扑人格。总有一个让你破防。",
+    "heroMeta": "5 大模型 · 15 个维度 · 2 个隐藏人格 · 约 6 分钟",
+    "startButton": "开始测试",
+    "features": [
+      {
+        "title": "真实牌桌场景",
+        "desc": "30 道题全部来自真实的德扑决策情境，每题附白话脚注，娱乐玩家也能看懂。"
+      },
+      {
+        "title": "从牌桌到生活",
+        "desc": "25 种人格，每一种都从你牌桌上的打法延伸到你生活里的样子——说中了就分享出去。"
+      },
+      {
+        "title": "隐藏彩蛋机制",
+        "desc": "两个隐藏人格埋在题目里。有人永远看不到，有人一测就中。"
+      }
+    ]
+  },
+  "test": {
+    "gateBadge": "彩蛋题",
+    "reversedBadge": "请认真读",
+    "backButton": "上一题",
+    "nextButton": "下一题",
+    "submitButton": "看结果"
+  },
+  "result": {
+    "yourType": "你的德扑人格是",
+    "matchLabel": "匹配度",
+    "exactLabel": "精准命中",
+    "dimensionLabel": "维度",
+    "pokerLabel": "牌桌上",
+    "lifeLabel": "生活里",
+    "warningLabel": "一句辛辣的警告",
+    "secondaryLabel": "你也有点像",
+    "dimensionBreakdownLabel": "你的 15 维画像",
+    "retakeButton": "再测一次",
+    "copyLinkButton": "复制链接",
+    "linkCopied": "链接已复制",
+    "shareText": "我是{code}·{cn}——{tagline}",
+    "generateImageButton": "生成分享图",
+    "generatingImage": "生成中…",
+    "downloadImageButton": "下载图片",
+    "copyImageButton": "复制图片",
+    "imageCopied": "图片已复制",
+    "imageCopyFailed": "复制失败，请长按图片保存",
+    "shareHint": "长按图片可保存到相册",
+    "luckyNotice": "你的答题模式离 25 种标准人格都很远，系统送你一张锦鲤贴画。",
+    "degenNotice": "你触发了隐藏机制。下方是严肃内容，请认真看。",
+    "degenHotline": "如果你觉得被说中了——可拨打 400-161-9995（中国大陆心理援助热线），或访问 https://www.gamblersanonymous.org/"
+  },
+  "footer": {
+    "disclaimer": "本测试仅供娱乐。请理性对待扑克，远离赌博！",
+    "copyright": "© 2026 THTI · 仅供娱乐"
+  }
+}
